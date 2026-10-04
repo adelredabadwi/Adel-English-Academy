@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mega Goal 2 Units 1–2 Interactive Test</title>
+<style>
+:root{--navy:#102a43;--blue:#1f5f99;--pale:#edf5fb;--line:#ccd9e5;--text:#172b3a;--good:#18794e;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f8fb;color:var(--text)}
+header{background:var(--navy);color:white;padding:24px 16px}.wrap{max-width:1000px;margin:auto}.sub{opacity:.82}
+main{max-width:1000px;margin:18px auto;padding:0 14px 40px}.panel,.card{background:white;border:1px solid var(--line);border-radius:14px;padding:16px}
+.topgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-weight:700;margin-bottom:6px}
+input[type=text],textarea,select{width:100%;font:inherit;padding:10px;border:1px solid #aebdcc;border-radius:9px;background:white}
+.tabs{display:flex;gap:8px;overflow:auto;padding:12px 0}.tabs button,.actions button{border:1px solid var(--line);border-radius:9px;padding:10px 14px;background:white;font-weight:700;cursor:pointer}
+.tabs button.active,.actions button.primary{background:var(--blue);color:white;border-color:var(--blue)}
+.meta{background:var(--pale);margin-bottom:12px}.question{margin:12px 0}.qtitle{font-weight:700;margin-bottom:8px}
+.choice{display:block;border:1px solid var(--line);border-radius:9px;padding:9px 10px;margin:7px 0;cursor:pointer}.choice input{margin-right:8px}
+.wordbox{background:var(--pale);border:1px dashed var(--blue);border-radius:10px;padding:10px;margin:10px 0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.actions button:disabled{opacity:.4;cursor:not-allowed}
+.progress{height:10px;background:#dce7ef;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--blue);width:0}
+.result{margin-top:16px}.correct{border-color:var(--good);background:#f0fbf6}.wrong{border-color:var(--bad);background:#fff4f2}.feedback{font-size:.9rem;margin-top:7px}.score{font-size:2rem;font-weight:800;color:var(--navy)}
+.gridscore{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.gridscore div{border:1px solid var(--line);border-radius:8px;padding:8px;display:flex;justify-content:space-between}
+.reading{white-space:pre-line;line-height:1.65}.muted{color:#5c7080;font-size:.92rem}
+@media(max-width:650px){.topgrid,.gridscore{grid-template-columns:1fr}header h1{font-size:1.5rem}.actions button{flex:1 1 42%}}
+@media print{.tabs,.actions,.progressrow{display:none}body{background:white}.panel,.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="sub">Mega Goal 2 · First Term · Units 1–2</div><h1>Interactive Review Test</h1><div class="sub">100 items · Connected by Technology + Crime Doesn’t Pay</div></div></header>
+<main>
+<div class="panel">
+  <div class="topgrid">
+    <div class="field"><label for="studentName">Student name</label><input id="studentName" type="text" placeholder="Enter name"></div>
+    <div class="field"><label for="studentClass">Class</label><input id="studentClass" type="text" placeholder="e.g. Grade 11"></div>
+  </div>
+  <div class="progressrow" style="margin-top:14px"><div style="display:flex;justify-content:space-between"><b>Progress</b><span id="progressText">0/100</span></div><div class="progress" style="margin-top:6px"><div id="progressBar"></div></div></div>
+</div>
+<div id="tabs" class="tabs"></div>
+<div id="meta" class="panel meta"></div>
+<div id="area"></div>
+<div class="actions">
+  <button id="prev">Previous</button>
+  <button id="next" class="primary">Next section</button>
+  <button id="submit" class="primary">Submit test</button>
+  <button id="reset">Reset</button>
+</div>
+<div id="result" class="panel result" hidden></div>
+</main>
+<script>
+const D={"mcq": [["Someone who enjoys exciting and sometimes risky activities is ____.", ["laid-back", "adventurous", "straightforward", "loner"], 1], ["A person who prefers spending time alone can be called a ____.", ["loner", "witness", "suspect", "inmate"], 0], ["Someone who says what they mean clearly and honestly is ____.", ["spontaneous", "straightforward", "wealthy", "invisible"], 1], ["If someone acts without planning first, that person is ____.", ["spontaneous", "down-to-earth", "unauthorized", "guilty"], 0], ["A calm person who does not worry much is often described as ____.", ["laid-back", "adventurous", "sensitive", "formal"], 0], ["Which phrase means practical and realistic?", ["down-to-earth", "out of touch", "in trouble", "on trial"], 0], ["A messaging app lets people communicate ____ over the Internet.", ["indirectly only", "in real time", "once a week", "without devices"], 1], ["Which is the safest online practice?", ["Share your password with friends", "Open links from strangers", "Use a strong private password", "Post your phone number publicly"], 2], ["Which word means 'to copy a file from the Internet to your device'?", ["dispatch", "download", "abandon", "decline"], 1], ["Privacy means keeping personal information ____.", ["public", "protected", "printed", "deleted"], 1], ["____ you use messaging apps every day?", ["Do", "Have", "Are", "Was"], 0], ["____ you ever changed your password?", ["Do", "Have", "Were", "Did"], 1], ["I ____ sending you the file right now.", ["am", "have", "do", "did"], 0], ["My laptop ____ stolen yesterday.", ["is", "was", "has", "does"], 1], ["The Internet ____ changed the way people communicate.", ["has", "does", "is", "was"], 0], ["Instant messaging is ____ than traditional mail.", ["fast", "faster", "fastest", "more fast"], 1], ["This is ____ useful app on my phone.", ["more", "the most", "most", "the more"], 1], ["A tablet is usually ____ than a desktop computer.", ["portable", "more portable", "most portable", "the portable"], 1], ["I need to ____ my phone screen repaired.", ["have", "make", "do", "be"], 0], ["Our school website needs ____ updated.", ["be", "to be", "being", "been"], 1], ["A person who steals from a house is a ____.", ["burglar", "juror", "witness", "cashier"], 0], ["To take control of a moving vehicle by force means to ____ it.", ["abandon", "hijack", "decline", "dispatch"], 1], ["A prisoner is also called an ____.", ["inmate", "acronym", "victim", "detective"], 0], ["A small or less serious crime is a ____.", ["misdemeanor", "network", "feature", "sentence"], 0], ["If something is done without permission, it is ____.", ["unauthorized", "straightforward", "adventurous", "economical"], 0], ["The suspect ____ by the police last night.", ["arrested", "was arrested", "has arrest", "was arresting"], 1], ["The stolen car has ____ found.", ["be", "been", "being", "was"], 1], ["The case will ____ presented in court tomorrow.", ["be", "been", "being", "is"], 0], ["The window ____ by the burglar.", ["broke", "was broken", "has breaking", "did break"], 1], ["The thief was identified ____ a witness.", ["to", "by", "at", "for"], 1], ["By the time the police arrived, the criminal ____.", ["escaped", "had escaped", "has escaped", "was escape"], 1], ["He was tired because he ____ for hours.", ["ran", "had been running", "has run", "is running"], 1], ["When I reached the station, the train ____ already left.", ["has", "had", "was", "did"], 1], ["The driver ____ between lanes when the officer stopped him.", ["had been swerving", "has swerved", "swerves", "is swerving"], 0], ["While the cashier ____ the alarm, the robbers ran away.", ["activated", "was activating", "has activated", "had activate"], 1], ["Omar ____ watch crime dramas every day, but he doesn't anymore.", ["used to", "use to", "is used to", "using to"], 0], ["When I was young, I ____ play football after school every day.", ["would", "will", "am", "have"], 0], ["What ____ you doing when you heard the noise?", ["were", "did", "had", "have"], 0], ["The police stopped him because he ____ suspiciously.", ["was acting", "has acted", "acts", "had act"], 0], ["She was upset because someone ____ her wallet.", ["had stolen", "steals", "has stole", "was steal"], 0]], "rewrite": [["Rewrite in the passive: The police arrested the suspect yesterday.", "The suspect was arrested by the police yesterday."], ["Rewrite in the passive: Someone has stolen my phone.", "My phone has been stolen."], ["Rewrite in the passive: The detectives will solve the case.", "The case will be solved by the detectives."], ["Rewrite in the passive: They are going to install a new security system.", "A new security system is going to be installed."], ["Combine using because: He didn't lock the door. The burglar entered.", "The burglar entered because he hadn't locked the door."], ["Rewrite using the past perfect progressive: Maha started studying at 6:00. The phone rang at 8:00.", "Maha had been studying for two hours when the phone rang."], ["Rewrite using used to: Omar watched crime dramas every day in the past, but he doesn't now.", "Omar used to watch crime dramas every day."], ["Rewrite using have/get something done: Someone services our car twice a year.", "We have our car serviced twice a year."], ["Rewrite with the opposite comparison: This phone is cheaper than that phone.", "That phone is more expensive than this phone."], ["Rewrite using the superlative: No other app is as useful as this one.", "This is the most useful app."]], "fill1Words": ["adventurous", "down-to-earth", "laid-back", "loner", "spontaneous", "straightforward", "contact", "password", "download", "privacy"], "fill1": [["Fahad prefers being alone. He is a _____.", "loner"], ["Noura always tells the truth directly. She is _____.", "straightforward"], ["Salem loves mountain climbing and rafting. He is _____.", "adventurous"], ["My uncle is practical and realistic. He is very _____.", "down-to-earth"], ["Ali rarely worries and stays relaxed. He is _____.", "laid-back"], ["Maha makes quick decisions without much planning. She is _____.", "spontaneous"], ["Only people on your _____ list should receive private messages.", "contact"], ["Never share your online _____ with strangers.", "password"], ["Do not _____ files sent by people you do not know.", "download"], ["Good security settings help protect your online _____.", "privacy"]], "matches": [["acronym", "a word formed from the first letters of other words"], ["dispatch", "to send someone or something somewhere"], ["network", "a connected system used to share information"], ["inhibition", "a feeling that prevents someone from acting freely"], ["feature", "an important or noticeable quality or function"], ["hijack", "to take control of a vehicle by force"], ["abandon", "to leave someone or something behind"], ["inmate", "a person kept in prison"], ["misdemeanor", "a less serious crime"], ["unauthorized", "without official permission"]], "classify": [["burglary", "Crime"], ["robbery", "Crime"], ["kidnapping", "Crime"], ["hijacking", "Crime"], ["theft", "Crime"], ["fine", "Punishment"], ["prison sentence", "Punishment"], ["community service", "Punishment"], ["probation", "Punishment"], ["jail term", "Punishment"]], "fill2Words": ["accused", "declined", "escaped", "evidence", "guilty", "innocent", "suspect", "witness", "sentence", "arrested"], "fill2": [["The police _____ the man after checking the security video.", "arrested"], ["The detective questioned the main _____ in the case.", "suspect"], ["A _____ saw the robber leave the store.", "witness"], ["The fingerprints were important _____.", "evidence"], ["The defendant said he was _____ and had not committed the crime.", "innocent"], ["The jury found the criminal _____.", "guilty"], ["The prosecutor _____ the man of stealing the car.", "accused"], ["The prisoner _____ from jail but was caught later.", "escaped"], ["The judge gave him a two-year prison _____.", "sentence"], ["The bank _____ the card transaction, so the payment did not go through.", "declined"]], "readingText": "Last Thursday, students at Al Noor Secondary School were preparing for a technology fair when the school's computer system suddenly stopped working. At first, the teachers thought there was a technical problem. However, the IT specialist discovered that someone had tried to enter the network using an unauthorized account. The person had not managed to steal any files, but several passwords had been changed.\n\nThe school immediately asked students and staff to log out of their accounts and create new passwords. Security cameras showed a visitor spending a long time near a computer room earlier that morning. A staff member also remembered seeing the same person taking photos of a notice board that contained temporary login information.\n\nBy the time the police arrived, the visitor had already left the building. Investigators collected the camera recordings and interviewed witnesses. Two days later, they identified the suspect. He admitted that he had been trying to access the system because he wanted to download exam materials. He was arrested before he could return to the school.\n\nAfter the incident, the school introduced stronger security rules. Temporary passwords were no longer displayed in public places, and students were reminded never to share passwords or open unknown links. The IT specialist explained that technology is useful only when people use it responsibly and protect their privacy.", "reading": [["Why did the school's computer system become a concern?", ["The Internet was too slow", "Someone had tried to enter the network", "Students lost their phones", "The fair was canceled"], 1], ["What had been changed?", ["Several passwords", "All exam questions", "The school timetable", "The cameras"], 0], ["What did the security cameras show?", ["A teacher leaving early", "A visitor near a computer room", "Students stealing files", "Police entering the building"], 1], ["What was on the notice board?", ["Temporary login information", "Exam results", "Bus schedules", "Crime reports"], 0], ["When the police arrived, the visitor ____.", ["was still in the building", "had already left", "was talking to the IT specialist", "had been arrested"], 1], ["What helped investigators identify the suspect?", ["Only his phone", "Camera recordings and witnesses", "A social media post only", "A lost wallet"], 1], ["Why did the suspect try to access the system?", ["To repair it", "To download exam materials", "To change the school logo", "To contact students"], 1], ["Which tense best describes his continuing action before he admitted it?", ["simple present", "past perfect progressive", "future passive", "present simple"], 1], ["What new rule did the school introduce?", ["Display passwords openly", "Stop using computers", "Keep temporary passwords out of public view", "Let visitors use staff accounts"], 2], ["What is the main message of the passage?", ["Technology should never be used at school", "Crime is always successful", "Responsible technology use requires security and privacy", "Passwords are unnecessary"], 2]]};
+const S=[
+ {t:"Q1 · Multiple Choice",n:"40 questions · vocabulary and grammar from Units 1–2",c:40,k:"mcq"},
+ {t:"Q2 · Rewrite",n:"10 questions · type the complete rewritten sentence",c:10,k:"rewrite"},
+ {t:"Q3 · Fill in the Blank",n:"10 questions · choose words from the box",c:10,k:"fill1"},
+ {t:"Q4 · Match Words & Meanings",n:"10 questions · select the correct meaning",c:10,k:"match"},
+ {t:"Q5 · Crime or Punishment?",n:"10 words · classify each item",c:10,k:"classify"},
+ {t:"Q6 · Complete Sentences",n:"10 questions · choose words from the box",c:10,k:"fill2"},
+ {t:"Q7 · Reading",n:"Read the passage and answer 10 comprehension questions",c:10,k:"reading"}
+];
+let sec=0,state={},submitted=false;
+const area=document.getElementById("area"),tabs=document.getElementById("tabs"),meta=document.getElementById("meta"),res=document.getElementById("result");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s||"").toLowerCase().replace(/[?.!,]/g,"").replace(/\s+/g," ").trim();
+const rewriteAccepted=(i,v)=>{
+ const a=[
+ ["the suspect was arrested by the police yesterday","the suspect was arrested yesterday by the police"],
+ ["my phone has been stolen"],
+ ["the case will be solved by the detectives","the case will be solved"],
+ ["a new security system is going to be installed","a new security system will be installed"],
+ ["the burglar entered because he hadn't locked the door","the burglar entered because he had not locked the door"],
+ ["maha had been studying for two hours when the phone rang","maha had been studying since 6 when the phone rang","maha had been studying since 6:00 when the phone rang"],
+ ["omar used to watch crime dramas every day"],
+ ["we have our car serviced twice a year","we get our car serviced twice a year"],
+ ["that phone is more expensive than this phone"],
+ ["this is the most useful app","this app is the most useful"]
+ ]; return a[i].includes(norm(v));
+};
+function save(){document.querySelectorAll("#area input:checked,#area select,#area textarea").forEach(e=>state[e.name]=e.value);progress()}
+function count(){let n=0;for(let i=0;i<40;i++)if(state["m"+i]!=null)n++;for(let i=0;i<10;i++){if((state["r"+i]||"").trim())n++;if(state["f1"+i])n++;if(state["mt"+i])n++;if(state["c"+i])n++;if(state["f2"+i])n++;if(state["rd"+i]!=null)n++;}return n}
+function progress(){document.querySelectorAll("#area input:checked,#area select,#area textarea").forEach(e=>state[e.name]=e.value);let n=count();document.getElementById("progressText").textContent=n+"/100";document.getElementById("progressBar").style.width=n+"%"}
+function choices(name,ops,sel){return ops.map((o,i)=>`<label class="choice"><input type="radio" name="${name}" value="${i}" ${String(sel)===String(i)?"checked":""}>${esc(o)}</label>`).join("")}
+function card(id,inside){return `<div class="card question" data-q="${id}">${inside}<div class="feedback" hidden></div></div>`}
+function render(){
+ tabs.innerHTML=S.map((x,i)=>`<button class="${i===sec?"active":""}" data-s="${i}">Q${i+1}</button>`).join("");
+ tabs.querySelectorAll("button").forEach(b=>b.onclick=()=>{save();sec=+b.dataset.s;render()});
+ meta.innerHTML=`<b>${S[sec].t}</b><div class="muted">${S[sec].n}</div>`;
+ const k=S[sec].k;
+ if(k==="mcq") area.innerHTML=D.mcq.map((q,i)=>card("m"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div>${choices("m"+i,q[1],state["m"+i])}`)).join("");
+ if(k==="rewrite") area.innerHTML=D.rewrite.map((q,i)=>card("r"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div><textarea rows="2" name="r${i}" placeholder="Write the complete sentence">${esc(state["r"+i]||"")}</textarea>`)).join("");
+ if(k==="fill1") area.innerHTML=`<div class="wordbox"><b>Word box:</b> ${D.fill1Words.join(" · ")}</div>`+D.fill1.map((q,i)=>card("f1"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div><select name="f1${i}"><option value="">Choose a word</option>${D.fill1Words.map(w=>`<option ${state["f1"+i]===w?"selected":""}>${esc(w)}</option>`).join("")}</select>`)).join("");
+ if(k==="match"){let defs=D.matches.map(x=>x[1]);area.innerHTML=D.matches.map((q,i)=>card("mt"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div><select name="mt${i}"><option value="">Choose the meaning</option>${defs.map(w=>`<option ${state["mt"+i]===w?"selected":""}>${esc(w)}</option>`).join("")}</select>`)).join("")}
+ if(k==="classify") area.innerHTML=D.classify.map((q,i)=>card("c"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div><select name="c${i}"><option value="">Choose category</option><option ${state["c"+i]==="Crime"?"selected":""}>Crime</option><option ${state["c"+i]==="Punishment"?"selected":""}>Punishment</option></select>`)).join("");
+ if(k==="fill2") area.innerHTML=`<div class="wordbox"><b>Word box:</b> ${D.fill2Words.join(" · ")}</div>`+D.fill2.map((q,i)=>card("f2"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div><select name="f2${i}"><option value="">Choose a word</option>${D.fill2Words.map(w=>`<option ${state["f2"+i]===w?"selected":""}>${esc(w)}</option>`).join("")}</select>`)).join("");
+ if(k==="reading") area.innerHTML=`<div class="card reading"><h3>A Technology Fair Incident</h3>${esc(D.readingText)}</div>`+D.reading.map((q,i)=>card("rd"+i,`<div class="qtitle">${i+1}. ${esc(q[0])}</div>${choices("rd"+i,q[1],state["rd"+i])}`)).join("");
+ document.getElementById("prev").disabled=sec===0;document.getElementById("next").disabled=sec===S.length-1;
+ if(submitted)feedback(); progress();
+}
+function grade(){
+ save();let score=0,ss=[0,0,0,0,0,0,0];
+ D.mcq.forEach((q,i)=>{if(+state["m"+i]===q[2]){score++;ss[0]++}});
+ D.rewrite.forEach((q,i)=>{if(rewriteAccepted(i,state["r"+i])){score++;ss[1]++}});
+ D.fill1.forEach((q,i)=>{if(state["f1"+i]===q[1]){score++;ss[2]++}});
+ D.matches.forEach((q,i)=>{if(state["mt"+i]===q[1]){score++;ss[3]++}});
+ D.classify.forEach((q,i)=>{if(state["c"+i]===q[1]){score++;ss[4]++}});
+ D.fill2.forEach((q,i)=>{if(state["f2"+i]===q[1]){score++;ss[5]++}});
+ D.reading.forEach((q,i)=>{if(+state["rd"+i]===q[2]){score++;ss[6]++}});
+ return [score,ss];
+}
+function feedback(){
+ document.querySelectorAll("[data-q]").forEach(el=>{
+  let id=el.dataset.q,ok=false,a="",i;
+  if(id.startsWith("rd")){i=+id.slice(2);ok=+state[id]===D.reading[i][2];a=D.reading[i][1][D.reading[i][2]]}
+  else if(id.startsWith("f1")){i=+id.slice(2);ok=state[id]===D.fill1[i][1];a=D.fill1[i][1]}
+  else if(id.startsWith("f2")){i=+id.slice(2);ok=state[id]===D.fill2[i][1];a=D.fill2[i][1]}
+  else if(id.startsWith("mt")){i=+id.slice(2);ok=state[id]===D.matches[i][1];a=D.matches[i][1]}
+  else if(id[0]==="m"){i=+id.slice(1);ok=+state[id]===D.mcq[i][2];a=D.mcq[i][1][D.mcq[i][2]]}
+  else if(id[0]==="r"){i=+id.slice(1);ok=rewriteAccepted(i,state[id]);a=D.rewrite[i][1]}
+  else if(id[0]==="c"){i=+id.slice(1);ok=state[id]===D.classify[i][1];a=D.classify[i][1]}
+  el.classList.remove("correct","wrong");el.classList.add(ok?"correct":"wrong");
+  let f=el.querySelector(".feedback");f.hidden=false;f.textContent=ok?"✓ Correct":"Correct answer: "+a;
+ });
+}
+document.getElementById("prev").onclick=()=>{save();sec--;render()};
+document.getElementById("next").onclick=()=>{save();sec++;render()};
+document.getElementById("area").addEventListener("input",progress);
+document.getElementById("area").addEventListener("change",progress);
+document.getElementById("submit").onclick=()=>{
+ let [score,ss]=grade();submitted=true;feedback();
+ let name=document.getElementById("studentName").value.trim()||"Student";
+ let msg=score>=90?"Excellent mastery.":score>=80?"Very good work.":score>=70?"Good work—review a few weak areas.":score>=60?"Developing—review grammar and vocabulary before retaking.":"More practice is recommended before retaking the test.";
+ res.hidden=false;res.innerHTML=`<div class="muted">Result for ${esc(name)}</div><div class="score">${score}/100</div><p><b>${msg}</b></p><div class="gridscore">${S.map((s,i)=>`<div><span>Q${i+1}</span><b>${ss[i]}/${s.c}</b></div>`).join("")}</div><p class="muted">Open any section to review incorrect answers and model answers.</p>`;
+ res.scrollIntoView({behavior:"smooth"});
+};
+document.getElementById("reset").onclick=()=>{if(confirm("Reset all answers?")){state={};submitted=false;sec=0;res.hidden=true;document.getElementById("studentName").value="";document.getElementById("studentClass").value="";render()}};
+render();
+</script>
+</body></html>
